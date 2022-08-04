@@ -115,8 +115,9 @@ function prevSlide(){
 //AUTOPLAY INTERVAL
 
 let autoplay = setInterval(nextSlide, 3000)
-wrapperEl.addEventListener('mouseenter', stopAutoPlay)
-wrapperEl.addEventListener('mouseleave', restartAutoPlay);
+let slider = document.querySelector('.slider')
+slider.addEventListener('mouseenter', stopAutoPlay)
+slider.addEventListener('mouseleave', restartAutoPlay);
 
 
 function stopAutoPlay(){
