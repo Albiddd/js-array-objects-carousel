@@ -11,6 +11,7 @@ ul {
 .container {
 	max-width: 900px;
 	margin: 0 auto;
+	padding-top: 200px;
 }
 
 .slider {
@@ -75,6 +76,7 @@ ul {
 	object-fit: cover;
 	object-position: center;
 	display: block;
+	border: 1px solid white;
 }
 
 .arrows {
@@ -87,5 +89,49 @@ ul {
 	left: 0;
 	right: 0;
 	transform: translateY(-50%);
-	color: tomato;
+	color: white;
+}
+.arrow-prev, .arrow-next{
+	cursor: pointer;
+	padding: 14px;
+	transition: 0.6s ease;
+}
+
+
+li {
+	position: relative;
+	animation-name: fade;
+	animation-duration: 1.5s;	
+}
+
+@keyframes fade {
+	from {opacity: 0.7;}
+	to {opacity: 1;}	
+}
+
+.nav-thumb{
+	max-width: 900px;
+	display: flex;
+	justify-content: center;
+	gap: 1px;
+}
+.col-thumb{
+	flex-basis: calc(100% / 5);
+}
+
+.thumb{
+	display: block;
+	max-width: 100%;
+	aspect-ratio: 16/9;
+	border-top: 1px solid white;
+	opacity: 0.5;
+}
+
+.thumb:hover{
+	opacity: 1;
+	cursor: pointer;
+}
+
+.thumb-active{
+	opacity: 1 !important;
 }

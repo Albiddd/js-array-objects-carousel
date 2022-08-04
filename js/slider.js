@@ -34,10 +34,10 @@ const slides = [
 	},
 ]
 
-
 let currentIndex = 0
 const wrapperEl = document.querySelector('.slides-wrapper')
 let thumb = document.querySelector('.nav-thumb')
+
 
 slides.forEach((slideEl, i) => {
 	if(i === currentIndex){
@@ -79,9 +79,11 @@ console.log(thumbElements)
 
 const nextArrowEl = document.querySelector(".arrow-next")
 const prevArrowEl = document.querySelector(".arrow-prev")
+prevArrowEl.addEventListener('click', prevSlide)
+nextArrowEl.addEventListener('click', nextSlide)
 
-prevArrowEl.addEventListener('click', prevSlide);
-nextArrowEl.addEventListener('click', nextSlide);
+// nextElement.addEventListener('mouseleave', restartInterval);
+
 
 
 function nextSlide(){
@@ -109,6 +111,22 @@ function prevSlide(){
     slideElements[currentIndex].classList.add('active')
 	thumbElements[currentIndex].classList.add('thumb-active')
 }
+
+//AUTOPLAY INTERVAL
+
+let autoplay = setInterval(nextSlide, 3000)
+wrapperEl.addEventListener('mouseenter', stopAutoPlay)
+wrapperEl.addEventListener('mouseleave', restartAutoPlay);
+
+
+function stopAutoPlay(){
+	clearInterval(autoplay)
+}
+function restartAutoPlay() {
+	autoplay = setInterval(nextSlide, 3000);   
+}
+
+
 
 
 
