@@ -34,11 +34,10 @@ const slides = [
 	},
 ]
 
+
 let currentIndex = 0
-
-
-
 const wrapperEl = document.querySelector('.slides-wrapper')
+let thumb = document.querySelector('.nav-thumb')
 
 slides.forEach((slideEl, i) => {
 	if(i === currentIndex){
@@ -51,6 +50,9 @@ slides.forEach((slideEl, i) => {
 				</div>
 			</li>
 			`
+		thumb.innerHTML += `<div class="col-thumb">
+			<img src="${slideEl.url}" class="thumb thumb-active" id="thumb-${i}" alt="">
+			</div>`
 	}	else{
 		wrapperEl.innerHTML += `
 			<li class="slide">
@@ -61,41 +63,94 @@ slides.forEach((slideEl, i) => {
 				</div>
 			</li>
 			`
+		thumb.innerHTML += `<div class="col-thumb">
+			<img src="${slideEl.url}" class="thumb" id="thumb-${i}" alt="">
+			</div>`
 	}
+	
 })
 const slideElements = document.querySelectorAll ('.slide')
 
-console.log(slideElements)
+// console.log(slideElements)
+
+let thumbElements = document.querySelectorAll('.thumb')
+
+console.log(thumbElements)
 
 const nextArrowEl = document.querySelector(".arrow-next")
+const prevArrowEl = document.querySelector(".arrow-prev")
 
-nextArrowEl.addEventListener('click', function (){
+prevArrowEl.addEventListener('click', prevSlide);
+nextArrowEl.addEventListener('click', nextSlide);
+
+
+function nextSlide(){
     //togliere la classe active dalla slide attiva
-
-	const slideActive = slideElements[currentIndex]
-	slideActive.classList.remove('active')	
-	
+	slideElements[currentIndex].classList.remove('active')	
+	thumbElements[currentIndex].classList.remove('thumb-active')	
+		
 	currentIndex++
 	if (currentIndex > slideElements.length-1){
 		currentIndex = 0
 	}
 	
-	let nextSlide = slideElements[currentIndex]
-	nextSlide.classList.add('active')
+	slideElements[currentIndex].classList.add('active')
+	thumbElements[currentIndex].classList.add('thumb-active')
+}
 
-})
-
-const prevArrowEl = document.querySelector(".arrow-prev")
-
-prevArrowEl.addEventListener('click', function (){
+function prevSlide(){
     //togliere la classe active dalla slide attiva
-    const slideActive = slideElements[currentIndex]
-    slideActive.classList.remove('active')
-    currentIndex--
+    slideElements[currentIndex].classList.remove('active')
+	thumbElements[currentIndex].classList.remove('thumb-active')
+	currentIndex--
 	if(currentIndex < 0){
 		currentIndex = slideElements.length-1
 	}
-    const nextSlide = slideElements[currentIndex]
-    nextSlide.classList.add('active')
+    slideElements[currentIndex].classList.add('active')
+	thumbElements[currentIndex].classList.add('thumb-active')
+}
 
+
+
+document.getElementById('thumb-0').addEventListener('click', function(){	
+	slideElements[currentIndex].classList.remove('active')
+	thumbElements[currentIndex].classList.remove('thumb-active')
+	currentIndex = 0
+	slideElements[currentIndex].classList.add('active')
+	thumbElements[currentIndex].classList.add('thumb-active')
 })
+
+document.getElementById('thumb-1').addEventListener('click', function(){	
+	slideElements[currentIndex].classList.remove('active')
+	thumbElements[currentIndex].classList.remove('thumb-active')
+	currentIndex = 1
+	slideElements[currentIndex].classList.add('active')
+	thumbElements[currentIndex].classList.add('thumb-active')
+})
+
+document.getElementById('thumb-2').addEventListener('click', function(){	
+	slideElements[currentIndex].classList.remove('active')
+	thumbElements[currentIndex].classList.remove('thumb-active')
+	currentIndex = 2
+	slideElements[currentIndex].classList.add('active')
+	thumbElements[currentIndex].classList.add('thumb-active')
+})
+
+document.getElementById('thumb-3').addEventListener('click', function(){	
+	slideElements[currentIndex].classList.remove('active')
+	thumbElements[currentIndex].classList.remove('thumb-active')
+	currentIndex = 3
+	slideElements[currentIndex].classList.add('active')
+	thumbElements[currentIndex].classList.add('thumb-active')
+})
+
+document.getElementById('thumb-4').addEventListener('click', function(){	
+	slideElements[currentIndex].classList.remove('active')
+	thumbElements[currentIndex].classList.remove('thumb-active')
+	currentIndex = 4
+	slideElements[currentIndex].classList.add('active')
+	thumbElements[currentIndex].classList.add('thumb-active')
+})
+
+
+
