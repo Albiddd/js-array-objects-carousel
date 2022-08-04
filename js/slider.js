@@ -35,55 +35,37 @@ const slides = [
 ]
 
 let currentIndex = 0
-const slideElements = []
+
 
 
 const wrapperEl = document.querySelector('.slides-wrapper')
 
 slides.forEach((slideEl, i) => {
-	wrapperEl.innerHTML += `
-	<li class="slide">
-		<img src="${slideEl.url}" alt="">
-		<div class="slide__content">
-			<h3 class="slide__title">${slideEl.title}</h3>
-			<p class="slide__description">${slideEl.description}</p>
-		</div>
-	</li>
-	`	
-
-	let activeImg = document.querySelector('.slide')
 	if(i === currentIndex){
-		activeImg.classList.add('active')
+		wrapperEl.innerHTML += `
+			<li class="slide active">
+				<img src="${slideEl.url}" alt="">
+				<div class="slide__content">
+					<h3 class="slide__title">${slideEl.title}</h3>
+					<p class="slide__description">${slideEl.description}</p>
+				</div>
+			</li>
+			`
+	}	else{
+		wrapperEl.innerHTML += `
+			<li class="slide">
+				<img src="${slideEl.url}" alt="">
+				<div class="slide__content">
+					<h3 class="slide__title">${slideEl.title}</h3>
+					<p class="slide__description">${slideEl.description}</p>
+				</div>
+			</li>
+			`
 	}
-
-	slideElements.push(activeImg)
 })
-
-// for(let key in slides){
-// 	wrapperEl.innerHTML += `
-// 	<li class="slide">
-// 		<img src="${slides[key].url}" alt="">
-// 		<div class="slide__content">
-// 			<h3 class="slide__title">${slides[key].title}</h3>
-// 			<p class="slide__description">${slides[key].description}</p>
-// 		</div>
-// 	</li>
-// 	`	
-// }
-// let activeImg = document.querySelector('.slide')
-
-// for(let i=0; i < slides.length; i++){
-// 	if(i === currentIndex){
-// 		activeImg.classList.add('active')
-// 	}
-
-// 	slideElements.push(activeImg)
-// }
-
+const slideElements = document.querySelectorAll ('.slide')
 
 console.log(slideElements)
-
-console.log(currentIndex)
 
 const nextArrowEl = document.querySelector(".arrow-next")
 
